@@ -148,7 +148,7 @@ public class Tareas extends AppCompatActivity {
             String descripcion = etDescrip.getText().toString();
 
             String fecha = calendario.getText().toString();
-
+            String horario = temporizar.getText().toString();
             //verifico que Materia no este vacio
             if(!descripcion.isEmpty()){
                 //contenedor de variables
@@ -162,6 +162,7 @@ public class Tareas extends AppCompatActivity {
 
                 Noti.put("id_noti",id);
                 Noti.put("fecha",fecha);
+                Noti.put("horario",horario);
                 Noti.put("id_tarea",id);
 
                 //esocgo la tabla
@@ -171,6 +172,7 @@ public class Tareas extends AppCompatActivity {
 
                 etDescrip.setText("");
                 calendario.setText("");
+                temporizar.setText("");
                 Toast.makeText(this,"Registro",Toast.LENGTH_SHORT).show();
 
                 // tabla de noti

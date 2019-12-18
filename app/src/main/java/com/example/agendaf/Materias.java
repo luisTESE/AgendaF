@@ -97,7 +97,7 @@ public class Materias extends AppCompatActivity {
 
         String Materia = spi.getSelectedItem().toString();
 
-        String query = "SELECT  t.descripcion,n.fecha from NOTI n inner join tarea t on n.id_tarea = t.id_tarea WHERE t.materia = '"+Materia+"' order by n.fecha desc";
+        String query = "SELECT  t.descripcion,n.fecha from NOTI n inner join tarea t on n.id_tarea = t.id_tarea WHERE t.materia = '"+Materia+"' order by n.fecha ASC";
         //String query = "SELECT descripcion FROM TAREA where materia='"+Materia+"'";
         Cursor fila = BaseDatos.rawQuery(query,null);
 

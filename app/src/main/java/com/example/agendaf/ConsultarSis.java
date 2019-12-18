@@ -57,7 +57,7 @@ public class ConsultarSis extends AppCompatActivity {
 
         //el select
         //String query = "SELECT descripcion FROM TAREA";
-        String query ="SELECT  t.descripcion,n.fecha from NOTI n inner join tarea t on n.id_tarea = t.id_tarea order by n.fecha DESC";
+        String query ="SELECT  t.descripcion,n.fecha from NOTI n inner join tarea t on n.id_tarea = t.id_tarea order by n.fecha ASC";
         Cursor fila = BaseDatos.rawQuery(query,null);
 
         // si la columa esta vacia
