@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">AgendaF</string>
+
+    // icono
+    <string name="icono">Interfaz Iconos</string>
+    <string name="interfazLetras">Interfaz Letras</string>
+
+    //extras
+    <string name="consultar">Consultar Horario</string>
+    <string name="horario">Ingresa horario</string>
+    <string name="materias">Ingresar Tareas</string>
+
+    <string name="materia">Materia</string>
+    <string name="maestro">Maestro</string>
+    <string name="guardar">Guardar</string>
+
+    <string name="regresar">Regresar</string>
+
+    <string name="consulta">Consultar</string>
+
+    <string name="des">Descripcion</string>
+
+    <string name="tarea">Tarea</string>
+</resources>
