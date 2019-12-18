@@ -3,6 +3,7 @@ package com.example.agendaf;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.agendaf.SQL.ConexionSQLite;
@@ -27,12 +29,9 @@ public class Tareas extends AppCompatActivity {
     private EditText etDescrip;
     private Spinner spi;
     private int tamano =0;
-    private int dia,mes,ano;
-    private TextView calendario;
+    private int dia,mes,ano,hora,min;
+    private TextView calendario,temporizar;
     private ImageButton guardar,regre,calen;
-
-    public static final int TIPO_DIALOGO =0;
-    private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class Tareas extends AppCompatActivity {
         setContentView(R.layout.activity_tareas);
 
         calendario = (TextView) findViewById(R.id.txtcale);
+        temporizar = (TextView) findViewById(R.id.txttempo);
         etDescrip = (EditText) findViewById(R.id.txtDes);
         spi = (Spinner) findViewById(R.id.spinner);
         consulSpinner();
@@ -61,7 +61,8 @@ public class Tareas extends AppCompatActivity {
         dia = ca.get(Calendar.DAY_OF_MONTH);
         mes = ca.get(Calendar.MONTH);
         ano = ca.get(Calendar.YEAR);
-
+        hora = ca.get(Calendar.HOUR);
+        min = ca.get(Calendar.MINUTE);
         mostrarFecha();
     }
 
@@ -84,7 +85,16 @@ public class Tareas extends AppCompatActivity {
 
         DatePickerDialog data = new DatePickerDialog(this,listenerDeDatePicker,ano,mes,dia);
         data.show();
-       
+
+        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int h, int m) {
+                temporizar.setText(h+":"+m);
+            }
+        };
+        TimePickerDialog time = new TimePickerDialog(this,timeSetListener,hora,min,true);
+        time.show();
+
     }
 
     // consultar spinner
