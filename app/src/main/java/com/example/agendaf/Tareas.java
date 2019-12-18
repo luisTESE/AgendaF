@@ -75,27 +75,16 @@ public class Tareas extends AppCompatActivity {
 
     public void Calenadario(View view){
         //calendario.setText("");
-        DatePickerDialog data = new DatePickerDialog(this,oyenteSelectorFecha,ano,mes,dia);
+        DatePickerDialog.OnDateSetListener listenerDeDatePicker = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int anio, int mese, int diaDelMes) {
+                calendario.setText(diaDelMes+"/"+mese+"/"+anio);
+            }
+        };
+
+        DatePickerDialog data = new DatePickerDialog(this,listenerDeDatePicker,ano,mes,dia);
         data.show();
-        data.onDateChanged(data.getDatePicker(),ano,mes,dia);
-        calendario.setText(data.getDatePicker().toString());
-
-        /*
-        final Calendar c = Calendar.getInstance();
-        dia = c.get(Calendar.DAY_OF_MONTH);
-        mes = c.get(Calendar.MONTH);
-        ano = c.get(Calendar.YEAR);
-
-       DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-           @Override
-           public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-               calendario.setText(day+"/"+month+"/"+year);
-           }
-       }
-       ,dia,mes,ano);
-       datePickerDialog.show();
-
-         */
+       
     }
 
     // consultar spinner
